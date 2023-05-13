@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		205221902A1051C600D7C01A /* FlickrResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052218F2A1051C600D7C01A /* FlickrResponse.swift */; };
 		20C445642A0B6F3C004813EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C445632A0B6F3C004813EE /* AppDelegate.swift */; };
 		20C445662A0B6F3C004813EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C445652A0B6F3C004813EE /* SceneDelegate.swift */; };
 		20C445682A0B6F3C004813EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C445672A0B6F3C004813EE /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2052218F2A1051C600D7C01A /* FlickrResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrResponse.swift; sourceTree = "<group>"; };
 		20C445602A0B6F3C004813EE /* SampleFlickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleFlickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C445632A0B6F3C004813EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C445652A0B6F3C004813EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				20C4456C2A0B6F3D004813EE /* Assets.xcassets */,
 				20C445632A0B6F3C004813EE /* AppDelegate.swift */,
 				20C445652A0B6F3C004813EE /* SceneDelegate.swift */,
+				2052218F2A1051C600D7C01A /* FlickrResponse.swift */,
 				20C445672A0B6F3C004813EE /* ViewController.swift */,
 				20C445692A0B6F3C004813EE /* Main.storyboard */,
 				20C4456E2A0B6F3D004813EE /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20C445682A0B6F3C004813EE /* ViewController.swift in Sources */,
+				205221902A1051C600D7C01A /* FlickrResponse.swift in Sources */,
 				20C445642A0B6F3C004813EE /* AppDelegate.swift in Sources */,
 				20C445662A0B6F3C004813EE /* SceneDelegate.swift in Sources */,
 			);
