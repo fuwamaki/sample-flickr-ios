@@ -56,13 +56,13 @@
 		20C445622A0B6F3C004813EE /* SampleFlickr */ = {
 			isa = PBXGroup;
 			children = (
+				20C445712A0B6F3D004813EE /* Info.plist */,
+				20C4456C2A0B6F3D004813EE /* Assets.xcassets */,
 				20C445632A0B6F3C004813EE /* AppDelegate.swift */,
 				20C445652A0B6F3C004813EE /* SceneDelegate.swift */,
 				20C445672A0B6F3C004813EE /* ViewController.swift */,
 				20C445692A0B6F3C004813EE /* Main.storyboard */,
-				20C4456C2A0B6F3D004813EE /* Assets.xcassets */,
 				20C4456E2A0B6F3D004813EE /* LaunchScreen.storyboard */,
-				20C445712A0B6F3D004813EE /* Info.plist */,
 			);
 			path = SampleFlickr;
 			sourceTree = "<group>";
