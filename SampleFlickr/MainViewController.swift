@@ -9,20 +9,83 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    private enum Section: CaseIterable {
+        case main
+    }
+
+    @IBOutlet private weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.register(
+                UINib(nibName: String(describing: ImageCollectionCell.self), bundle: Bundle.main),
+                forCellWithReuseIdentifier: String(describing: ImageCollectionCell.self)
+            )
+            collectionView.delegate = self
+        }
+    }
+
+    private lazy var indicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView()
+        indicator.center = view.center
+        indicator.hidesWhenStopped = true
+        indicator.style = .large
+        indicator.color = UIColor.systemMint
+        indicator.isHidden = true
+        return indicator
+    }()
+
+    private var dataSource: UICollectionViewDiffableDataSource<Section, FlickrPhoto>!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(indicator)
+        setupCollectionViewLayout()
+        setupDataSource()
         Task {
             do {
                 let response = try await fetch()
-                print(response)
+                let photosWithUrl = response.photos.photo.filter { $0.urlString != nil }
+                var snapshot = NSDiffableDataSourceSnapshot<Section, FlickrPhoto>()
+                snapshot.appendSections(Section.allCases)
+                snapshot.appendItems(photosWithUrl, toSection: .main)
+                await dataSource.apply(snapshot, animatingDifferences: false)
             } catch let error {
                 print(error.localizedDescription)
             }
         }
     }
 
+    private func setupCollectionViewLayout() {
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(0.3333333333333),
+            heightDimension: .fractionalWidth(0.3333333333333)
+        ))
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: NSCollectionLayoutSize(
+                widthDimension: .fractionalWidth(1),
+                heightDimension: .fractionalWidth(0.3333333333333)
+            ),
+            subitems: [item]
+        )
+        let section = NSCollectionLayoutSection(group: group)
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        collectionView.collectionViewLayout = layout
+    }
+
+    private func setupDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, FlickrPhoto>(
+            collectionView: collectionView
+        ) { collectionView, indexPath, flickrPhoto in
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: String(describing: ImageCollectionCell.self),
+                for: indexPath
+            ) as! ImageCollectionCell
+            cell.render(flickrPhoto: flickrPhoto)
+            return cell
+        }
+    }
+
     // API Document: https://www.flickr.com/services/api/flickr.interestingness.getList.html
-    func fetch() async throws -> FlickrResponse {
+    private func fetch() async throws -> FlickrResponse {
         var urlComponents = URLComponents(
             string: "https://api.flickr.com/services/rest"
         )!
@@ -45,5 +108,13 @@ class MainViewController: UIViewController {
         default:
             throw NSError()
         }
+    }
+}
+
+extension MainViewController: UICollectionViewDelegate {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath
+    ) {
     }
 }
