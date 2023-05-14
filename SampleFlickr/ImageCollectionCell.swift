@@ -47,11 +47,27 @@ final class ImageCollectionCell: UICollectionViewCell {
 
     private func fetchImageData(urlString: String) async throws -> Data {
         let url = URL(string: urlString)!
+        if let data = ImageCache.data(url: url) {
+            return data
+        }
         let (data, response) = try await URLSession.shared.data(from: url)
         guard let httpResponse = response as? HTTPURLResponse,
               httpResponse.statusCode == 200 else {
             throw NSError()
         }
+        ImageCache.append(url: url, data: data)
         return data
+    }
+}
+
+final class ImageCache {
+    private static var dataList: [URL: Data] = [:]
+
+    static func data(url: URL) -> Data? {
+        dataList[url]
+    }
+
+    static func append(url: URL, data: Data) {
+        dataList[url] = data
     }
 }
