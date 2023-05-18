@@ -56,13 +56,13 @@ class MainViewController: UIViewController {
 
     private func setupCollectionViewLayout() {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(0.3333333333333),
-            heightDimension: .fractionalWidth(0.3333333333333)
+            widthDimension: .fractionalWidth(1/3),
+            heightDimension: .fractionalWidth(1/3)
         ))
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: NSCollectionLayoutSize(
                 widthDimension: .fractionalWidth(1),
-                heightDimension: .fractionalWidth(0.3333333333333)
+                heightDimension: .fractionalWidth(1/3)
             ),
             subitems: [item]
         )
@@ -100,10 +100,8 @@ class MainViewController: UIViewController {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NSError()
         }
-        print("Response Status Code: " + String(httpResponse.statusCode))
         switch httpResponse.statusCode {
         case 200:
-            print(try JSONSerialization.jsonObject(with: data) as! [String: Any])
             return try JSONDecoder().decode(FlickrResponse.self, from: data)
         default:
             throw NSError()
