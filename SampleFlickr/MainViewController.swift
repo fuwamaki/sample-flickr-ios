@@ -34,6 +34,7 @@ class MainViewController: UIViewController {
     }()
 
     private var dataSource: UICollectionViewDiffableDataSource<Section, FlickrPhoto>!
+    private var flickrPhotos: [FlickrPhoto] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +44,10 @@ class MainViewController: UIViewController {
         Task {
             do {
                 let response = try await fetch()
-                let photosWithUrl = response.photos.photo.filter { $0.urlString != nil }
+                self.flickrPhotos = response.photos.photo.filter { $0.urlString != nil }
                 var snapshot = NSDiffableDataSourceSnapshot<Section, FlickrPhoto>()
                 snapshot.appendSections(Section.allCases)
-                snapshot.appendItems(photosWithUrl, toSection: .main)
+                snapshot.appendItems(self.flickrPhotos, toSection: .main)
                 await dataSource.apply(snapshot, animatingDifferences: false)
             } catch let error {
                 print(error.localizedDescription)
@@ -114,5 +115,8 @@ extension MainViewController: UICollectionViewDelegate {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
     ) {
+        let flickrPhoto = self.flickrPhotos[indexPath.row]
+        let viewController = DetailViewController.instantiate(flickrPhoto: flickrPhoto)
+        present(viewController, animated: true)
     }
 }

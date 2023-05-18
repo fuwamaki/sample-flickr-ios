@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		201D01EE2A15E6A000221FF9 /* DetailViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201D01ED2A15E6A000221FF9 /* DetailViewController.storyboard */; };
 		205221902A1051C600D7C01A /* FlickrResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2052218F2A1051C600D7C01A /* FlickrResponse.swift */; };
 		205221922A10571F00D7C01A /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205221912A10571F00D7C01A /* ImageCollectionCell.swift */; };
 		205221942A10572A00D7C01A /* ImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205221932A10572A00D7C01A /* ImageCollectionCell.xib */; };
+		208E4F472A1061CB00DC9B28 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E4F462A1061CB00DC9B28 /* DetailViewController.swift */; };
 		20C445642A0B6F3C004813EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C445632A0B6F3C004813EE /* AppDelegate.swift */; };
 		20C445662A0B6F3C004813EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C445652A0B6F3C004813EE /* SceneDelegate.swift */; };
 		20C445682A0B6F3C004813EE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C445672A0B6F3C004813EE /* MainViewController.swift */; };
@@ -19,9 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		201D01ED2A15E6A000221FF9 /* DetailViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailViewController.storyboard; sourceTree = "<group>"; };
 		2052218F2A1051C600D7C01A /* FlickrResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrResponse.swift; sourceTree = "<group>"; };
 		205221912A10571F00D7C01A /* ImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
 		205221932A10572A00D7C01A /* ImageCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionCell.xib; sourceTree = "<group>"; };
+		208E4F462A1061CB00DC9B28 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		20C445602A0B6F3C004813EE /* SampleFlickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleFlickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C445632A0B6F3C004813EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C445652A0B6F3C004813EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +75,8 @@
 				20C445692A0B6F3C004813EE /* MainViewController.storyboard */,
 				205221912A10571F00D7C01A /* ImageCollectionCell.swift */,
 				205221932A10572A00D7C01A /* ImageCollectionCell.xib */,
+				208E4F462A1061CB00DC9B28 /* DetailViewController.swift */,
+				201D01ED2A15E6A000221FF9 /* DetailViewController.storyboard */,
 				20C4456E2A0B6F3D004813EE /* LaunchScreen.storyboard */,
 			);
 			path = SampleFlickr;
@@ -136,6 +142,7 @@
 			files = (
 				20C445702A0B6F3D004813EE /* LaunchScreen.storyboard in Resources */,
 				20C4456D2A0B6F3D004813EE /* Assets.xcassets in Resources */,
+				201D01EE2A15E6A000221FF9 /* DetailViewController.storyboard in Resources */,
 				20C4456B2A0B6F3C004813EE /* MainViewController.storyboard in Resources */,
 				205221942A10572A00D7C01A /* ImageCollectionCell.xib in Resources */,
 			);
@@ -151,6 +158,7 @@
 				20C445682A0B6F3C004813EE /* MainViewController.swift in Sources */,
 				205221902A1051C600D7C01A /* FlickrResponse.swift in Sources */,
 				20C445642A0B6F3C004813EE /* AppDelegate.swift in Sources */,
+				208E4F472A1061CB00DC9B28 /* DetailViewController.swift in Sources */,
 				205221922A10571F00D7C01A /* ImageCollectionCell.swift in Sources */,
 				20C445662A0B6F3C004813EE /* SceneDelegate.swift in Sources */,
 			);
