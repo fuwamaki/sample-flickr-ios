@@ -41,18 +41,7 @@ class MainViewController: UIViewController {
         view.addSubview(indicator)
         setupCollectionViewLayout()
         setupDataSource()
-        Task {
-            do {
-                let response = try await fetch()
-                self.flickrPhotos = response.photos.photo.filter { $0.urlString != nil }
-                var snapshot = NSDiffableDataSourceSnapshot<Section, FlickrPhoto>()
-                snapshot.appendSections(Section.allCases)
-                snapshot.appendItems(self.flickrPhotos, toSection: .main)
-                await dataSource.apply(snapshot, animatingDifferences: false)
-            } catch let error {
-                print(error.localizedDescription)
-            }
-        }
+        fetch()
     }
 
     private func setupCollectionViewLayout() {
@@ -85,31 +74,23 @@ class MainViewController: UIViewController {
         }
     }
 
-    // API Document: https://www.flickr.com/services/api/flickr.interestingness.getList.html
-    private func fetch() async throws -> FlickrResponse {
-        var urlComponents = URLComponents(
-            string: "https://api.flickr.com/services/rest"
-        )!
-        urlComponents.queryItems = [
-            URLQueryItem(name: "api_key", value: "49d464f0832177ce8d85b43ae368c5b9"),
-            URLQueryItem(name: "method", value: "flickr.interestingness.getList"),
-            URLQueryItem(name: "format", value: "json"),
-            URLQueryItem(name: "nojsoncallback", value: "1"),
-            URLQueryItem(name: "extras", value: "url_h")
-        ]
-        let (data, response) = try await URLSession.shared.data(from: urlComponents.url!)
-        guard let httpResponse = response as? HTTPURLResponse else {
-            throw NSError()
-        }
-        switch httpResponse.statusCode {
-        case 200:
-            return try JSONDecoder().decode(FlickrResponse.self, from: data)
-        default:
-            throw NSError()
+    private func fetch() {
+        Task {
+            do {
+                let response = try await APIClient.fetchFlickrPhotos()
+                self.flickrPhotos = response.photos.photo.filter { $0.urlString != nil }
+                var snapshot = NSDiffableDataSourceSnapshot<Section, FlickrPhoto>()
+                snapshot.appendSections(Section.allCases)
+                snapshot.appendItems(self.flickrPhotos, toSection: .main)
+                await dataSource.apply(snapshot, animatingDifferences: false)
+            } catch let error {
+                print(error.localizedDescription)
+            }
         }
     }
 }
 
+// MARK: UICollectionViewDelegate
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(
         _ collectionView: UICollectionView,

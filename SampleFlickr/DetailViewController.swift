@@ -22,6 +22,7 @@ final class DetailViewController: UIViewController {
     }()
 
     private var flickrPhoto: FlickrPhoto!
+
     static func instantiate(flickrPhoto: FlickrPhoto) -> DetailViewController {
         let storyboard = UIStoryboard(name: String(describing: self), bundle: Bundle(for: self))
         let viewController = storyboard.instantiateInitialViewController() as! DetailViewController
@@ -34,7 +35,7 @@ final class DetailViewController: UIViewController {
         Task {
             self.setupImage(nil)
             self.indicator.startAnimating()
-            let data = try await fetchImageData(urlString: flickrPhoto.urlString!)
+            let data = try await APIClient.fetchImageData(urlString: flickrPhoto.urlString!)
             self.indicator.stopAnimating()
             self.setupImage(UIImage(data: data))
         }
@@ -42,19 +43,5 @@ final class DetailViewController: UIViewController {
 
     @MainActor private func setupImage(_ image: UIImage?) {
         imageView.image = image
-    }
-
-    private func fetchImageData(urlString: String) async throws -> Data {
-        let url = URL(string: urlString)!
-        if let data = ImageCache.data(url: url) {
-            return data
-        }
-        let (data, response) = try await URLSession.shared.data(from: url)
-        guard let httpResponse = response as? HTTPURLResponse,
-              httpResponse.statusCode == 200 else {
-            throw NSError()
-        }
-        ImageCache.append(url: url, data: data)
-        return data
     }
 }
