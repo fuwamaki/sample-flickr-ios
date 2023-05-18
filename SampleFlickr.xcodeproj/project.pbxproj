@@ -12,6 +12,7 @@
 		205221922A10571F00D7C01A /* ImageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 205221912A10571F00D7C01A /* ImageCollectionCell.swift */; };
 		205221942A10572A00D7C01A /* ImageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 205221932A10572A00D7C01A /* ImageCollectionCell.xib */; };
 		208466952A15EC17005B82A9 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208466942A15EC17005B82A9 /* APIClient.swift */; };
+		208466972A15ED04005B82A9 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208466962A15ED04005B82A9 /* ImageCache.swift */; };
 		208E4F472A1061CB00DC9B28 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 208E4F462A1061CB00DC9B28 /* DetailViewController.swift */; };
 		20C445642A0B6F3C004813EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C445632A0B6F3C004813EE /* AppDelegate.swift */; };
 		20C445662A0B6F3C004813EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C445652A0B6F3C004813EE /* SceneDelegate.swift */; };
@@ -27,6 +28,7 @@
 		205221912A10571F00D7C01A /* ImageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionCell.swift; sourceTree = "<group>"; };
 		205221932A10572A00D7C01A /* ImageCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionCell.xib; sourceTree = "<group>"; };
 		208466942A15EC17005B82A9 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		208466962A15ED04005B82A9 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 		208E4F462A1061CB00DC9B28 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		20C445602A0B6F3C004813EE /* SampleFlickr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleFlickr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C445632A0B6F3C004813EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				20C445632A0B6F3C004813EE /* AppDelegate.swift */,
 				20C445652A0B6F3C004813EE /* SceneDelegate.swift */,
 				2052218F2A1051C600D7C01A /* FlickrResponse.swift */,
+				208466962A15ED04005B82A9 /* ImageCache.swift */,
 				208466942A15EC17005B82A9 /* APIClient.swift */,
 				20C445672A0B6F3C004813EE /* MainViewController.swift */,
 				20C445692A0B6F3C004813EE /* MainViewController.storyboard */,
@@ -160,6 +163,7 @@
 			files = (
 				20C445682A0B6F3C004813EE /* MainViewController.swift in Sources */,
 				208466952A15EC17005B82A9 /* APIClient.swift in Sources */,
+				208466972A15ED04005B82A9 /* ImageCache.swift in Sources */,
 				205221902A1051C600D7C01A /* FlickrResponse.swift in Sources */,
 				20C445642A0B6F3C004813EE /* AppDelegate.swift in Sources */,
 				208E4F472A1061CB00DC9B28 /* DetailViewController.swift in Sources */,

@@ -45,15 +45,3 @@ final class ImageCollectionCell: UICollectionViewCell {
         imageView.image = image
     }
 }
-
-final class ImageCache {
-    private static var dataList: [URL: Data] = [:]
-
-    static func data(url: URL) -> Data? {
-        dataList[url]
-    }
-
-    static func append(url: URL, data: Data) {
-        dataList[url] = data
-    }
-}
